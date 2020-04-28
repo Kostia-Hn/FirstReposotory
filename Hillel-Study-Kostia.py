@@ -9,6 +9,17 @@ import csv
 
 app = Flask("app")
 
+import string
+
+from flask import Flask
+import datetime
+import random
+
+from faker import Faker
+import csv
+
+app = Flask("app")
+
 fake = Faker()
 fakes_list = ""
 for i in range (1,101,1):
@@ -43,6 +54,20 @@ avg_mass = total_mass/students_counter
 str_avg_h = "Average height is " + str(int(avg_height * 2.54)) + " cm."
 str_avg_m = "Average weight is " + str(int(avg_mass * 0.453592)) + " kg."
 
+
+@app.route("/faker")
+def f_fakes():
+    return fakes_list
+
+@app.route("/average")
+def average():
+    return str_avg_m + "; " + str_avg_h
+
+@app.route("/modules")
+def modules():
+    f = open("requirements.txt",'r')
+    return f.read()
+
 @app.route("/")
 def hello():
     return "Hellio"
@@ -58,18 +83,7 @@ def gen_pass():
         for _ in range (10)
     ])
 
-@app.route("/faker")
-def f_fakes():
-    return fakes_list
 
-@app.route("/average")
-def average():
-    return str_avg_m + "; " + str_avg_h
-
-@app.route("/modules")
-def modules():
-    f = open("requirements.txt",'r')
-    return f.read()
 
 app.run()
 
