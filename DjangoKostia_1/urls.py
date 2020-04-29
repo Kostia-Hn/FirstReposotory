@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from test_1.views import unique_names
+from test_1.views import gen_pass
+from test_1.views import database_cities
+from test_1.views import turnover
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('unique-names/', unique_names),
+    path('', admin.site.urls),
+    path('gen_password/', gen_pass),
+    path('database_cities/', database_cities),
+    path('turnover/', turnover)
 ]
