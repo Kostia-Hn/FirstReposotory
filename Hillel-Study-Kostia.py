@@ -25,11 +25,4 @@ def gen_pass():
         for _ in range (10)
     ])
 
-
-
 app.run()
-
-
-
-
-
